@@ -2,12 +2,31 @@ syntax = "proto3";
 
 import "google/protobuf/timestamp.proto";
 
-
 option go_package = "github.com/353solutions.com/carz/pb";
 
 message Location {
     double lat = 1;
     double lng = 2;
-    //   google.protobuf.Timestamp time = 4;
+}
 
+enum Status {
+    OFF = 0;
+    FREE = 1;
+    RIDE = 2;
+}
+
+message Car {
+    string id = 1;
+    string driver_id = 2;
+    Location location = 3;
+    google.protobuf.Timestamp time = 4;
+    Status status = 5;
+}
+
+message UpdateResponse {
+    string id = 1;
+}
+
+service Carz {
+    rpc Update(Car) returns (UpdateResponse) {}
 }
