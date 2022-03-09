@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+
+option go_package = "github.com/353solutions.com/carz/pb";
+
+message Location {
+    double lat = 1;
+    double lng = 2;
+    //   google.protobuf.Timestamp time = 4;
+
+}
